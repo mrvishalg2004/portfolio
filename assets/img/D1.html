@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slideshow Example</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f1f1f1;
+  }
+  .slideshow {
+    position: relative;
+    max-width: 800px;
+    overflow: hidden;
+  }
+  .slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  .slide {
+    flex: 0 0 100%;
+  }
+</style>
+</head>
+<body>
+
+<div class="slideshow">
+  <div class="slides">
+    <div class="slide">
+      <img src="portfolio-responsive-complete-master/assets/img/work1.jpg" alt="Image 1">
+      <p>Beautiful Landscape 1</p>
+    </div>
+    <div class="slide">
+      <img src="portfolio-responsive-complete-master/assets/img/work1.jpg" alt="Image 2">
+      <p>Beautiful Landscape 2</p>
+    </div>
+    <div class="slide">
+      <img src="portfolio-responsive-complete-master/assets/img/work1.jpg" alt="Image 3">
+      <p>Beautiful Landscape 3</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const slides = document.querySelector('.slides');
+  const slideWidth = document.querySelector('.slide').clientWidth;
+  let counter = 1;
+
+  setInterval(() => {
+    slides.style.transition = 'transform 0.5s ease-in-out';
+    slides.style.transform = `translateX(-${slideWidth * counter}px)`;
+    counter++;
+
+    if (counter >= slides.children.length) {
+      counter = 0;
+      setTimeout(() => {
+        slides.style.transition = 'none';
+        slides.style.transform = `translateX(0)`;
+      }, 500);
+    }
+  }, 3000);
+</script>
+
+</body>
+</html>
